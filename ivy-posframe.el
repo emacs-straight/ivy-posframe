@@ -6,7 +6,7 @@
 ;;         Naoya Yamashita <conao3@gmail.com>
 ;; Maintainer: Feng Shu <tumashu@163.com>
 ;; URL: https://github.com/tumashu/ivy-posframe
-;; Version: 0.5.2
+;; Version: 0.5.3
 ;; Keywords: abbrev, convenience, matching, ivy
 ;; Package-Requires: ((emacs "26.0") (posframe "0.8.0") (ivy "0.13.0"))
 
@@ -531,7 +531,9 @@ This variable is useful for `ivy-posframe-read-action' .")
         (overlay-put ov 'ivy-posframe t)
         (overlay-put ov 'face
                      (let ((bg-color (face-background 'default nil)))
-                       `(:background ,bg-color :foreground ,bg-color)))
+                       `( :background ,bg-color :foreground ,bg-color
+                          :box nil :underline nil
+                          :overline nil :strike-through nil)))
         (setq-local cursor-type nil)))))
 
 (defun ivy-posframe--add-prompt (fn &rest args)
