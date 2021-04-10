@@ -177,7 +177,6 @@ When nil, Using current frame's font as fallback."
   "The height of ivy-min-posframe."
   :type 'number)
 
-(define-obsolete-variable-alias 'ivy-posframe-parent-frame-poshandler 'ivy-posframe-refposhandler "0.6")
 (defcustom ivy-posframe-refposhandler #'ivy-posframe-refposhandler-default
   "The refposhandler use by ivy-posframe.
 
@@ -248,13 +247,13 @@ This variable is useful for `ivy-posframe-read-action' .")
 
 (defvar exwm--connection)
 (defvar exwm-workspace--workareas)
-(defvar  exwm-workspace-current-index)
+(defvar exwm-workspace-current-index)
 
 (defun ivy-posframe-refposhandler-default (&optional frame)
   "The default posframe refposhandler used by ivy-posframe."
   (cond
    ;; EXWM environment
-   (exwm--connection
+   ((bound-and-true-p exwm--connection)
     (or (ignore-errors
           (let ((info (elt exwm-workspace--workareas
                            exwm-workspace-current-index)))
